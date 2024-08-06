@@ -5,7 +5,7 @@ const font = Poppins({
     subsets: ['latin'] 
 });
 
-
+// navbar
 const Navbar = () => {
     return (
         <>
