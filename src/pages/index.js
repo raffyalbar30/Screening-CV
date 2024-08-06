@@ -1,13 +1,16 @@
-import Image from "next/image";
+
 import { Inter } from "next/font/google";
-import Navbar from "@/components/UI/Navbar";
+import Dashboard from "@/layouts/Dashboard/Dashboard";
+import Mainbar from "@/layouts/Mainbar/Mainbar";
+
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   return (
       <div className="">
-          <Navbar></Navbar>
+          <Dashboard />
+          <Mainbar />
       </div>
   );
 }
