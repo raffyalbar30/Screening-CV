@@ -1,0 +1,28 @@
+"use client"
+import React from 'react'
+import ReCAPTCHA from "react-google-recaptcha"
+import { CiSearch } from "react-icons/ci";
+
+
+export default function Uploader() {
+  return (
+    <>
+     <div className="flex justify-center mt-12">
+        <form>
+        <input type="text" className="w-full rounded-md py-2 bg-white placeholder:text-slate-400 placeholder:pl-2 text-slate-400 " placeholder="your posisition apply.."/>
+         <div className="border-dashed border-2 border-slate-500 mt-2 px-16 h-auto p-12 rounded-md">
+            <input className="mx-auto w-full absolute mt-4 opacity-0" type="file" id="resumme" name="resumefile" multiple />
+            <label htmlFor="" className='flex justify-center mt-2 text-slate-600'><span className='font-semibold '>Click to upload </span> <span>or drag and drop</span></label>
+            <label htmlFor="" className='flex justify-center text-slate-600'>SVG, PNG, JPG or GIF (MAX, 10MB)</label>
+         </div>
+         <label htmlFor="" className='mt-4 text-[12px] ml-1 text-slate-600'>Anda memerlukan CV PDF untuk mengecek ATS-friendly</label>
+         <ReCAPTCHA sitekey={process.env.NEXT_PUBLIC_RECAPCATH_KEY } />
+         <button className="w-full bg-indigo-800 mt-4 rounded-md text-white py-2 flex items-center justify-center gap-x-2">
+         <CiSearch className="text-[24px]" />
+            Check ATS
+        </button>
+        </form>
+     </div>
+    </>
+  )
+}
