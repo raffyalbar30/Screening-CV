@@ -1,17 +1,24 @@
 import React from 'react'
 import { Poppins } from "next/font/google";
+import Uploader from '../UI/uploader';
 const font = Poppins({
     weight: '400',
     subsets: ['latin'] 
 });
 
-export default function Maincontent({ chilldren }) {
+export default function Maincontent() {
   return (
-    <div className="border border-slate-400 h-auto mt-16">
-        <div className={`flex justify-center ${font.className}`}>
+    <div className={`mt-16 ${font.className}`}>
+        <div className={`flex justify-center`}>
             <span className="text-[56px] font-semibold text-slate-500">AI <span className="text-amber-600 mr-2">CV ATS Scanner</span>Gratis</span>
         </div>
-        { chilldren }
+        <div className="flex justify-center">
+           <div className="flex-wrap">
+            <span>CV ATS Scanner adalah sebuah tools buat kamu para Jobseker, Perbaiki CV mu dalam penulisan dan tata bahasa  </span>
+            <p className="flex justify-center">Track dan optimalisasikan penulisan & ratting CV anda di sini.</p>
+           </div>
+         </div>
+         <Uploader />
     </div>
   )
 }
