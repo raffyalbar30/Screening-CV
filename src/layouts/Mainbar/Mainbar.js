@@ -4,6 +4,7 @@ import DetailAccordion from './components/accordion'
 import Benner from '@/components/UI/benner'
 
 
+
 export default function Mainbar() {
   return (
    <>
