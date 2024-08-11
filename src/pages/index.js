@@ -13,7 +13,7 @@ export default function Home() {
         <>
           <Dashboard />
            <Mainbar />
-          <Footercompnt /> 
+          {/* <Footercompnt />  */}
         </>
       
   );
