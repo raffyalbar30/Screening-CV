@@ -10,7 +10,7 @@ const Navbar = () => {
     return (
         <>
          <div className={`${font.className} flex items-center ml-4`}>
-         <div className="ml-2 px-4 py-2 rounded-lg bg-indigo-800">
+         <div className="ml-8 px-4 py-2 rounded-lg bg-indigo-800">
              <span className="text-xl text-white">R</span>
          </div>
           <span className="ml-1 text-xl font-semibold text-slate-500 font-white">affsume</span>
