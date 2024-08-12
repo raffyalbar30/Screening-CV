@@ -9,7 +9,7 @@ export default function Footercompnt() {
   return (
     <div className="mt-2 mb-4">
         <Footer>
-            <div className="mt-8 flex justify-evenly">
+            <div className="mt-8 lg:flex lg:justify-evenly md:flex md:justify-evenly lg:items-center">
               <Data />
                <Links />
                 <Tools />

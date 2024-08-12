@@ -9,16 +9,16 @@ import Benner from '@/components/UI/benner'
 export default function Mainbar() {
   return (
    <>
-   <div className="border border-slate-500 w-full">
+   <div className=" w-full">
       <Maincontent />
-      {/* <div className="mt-32 flex justify-center">
-        <div className={`w-1/2 bg-slate-50 rounded-md p-4`}>
+       <div className="lg:mt-32 mt-24 flex justify-center">
+        <div className={`lg:w-1/2 md:w-1/2 w-full bg-slate-50 rounded-md p-4`}>
           <DetailAccordion />
         </div>
       </div> 
-       <div className="mt-12">
-        <Benner />
-       </div> */}
+      <div className="mt-2">
+       <Benner/>
+       </div> 
    </div>
    </>
   )
