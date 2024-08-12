@@ -17,7 +17,7 @@ import {
    return (
   <Accordion type="single" collapsible className={`${font.className} w-full`}>
       <AccordionItem value="item-1">
-        <AccordionTrigger className="text-xl font-semibold hover:text-amber-600">Apa itu AI CV ATS Checker?</AccordionTrigger>
+        <AccordionTrigger className="sm:text-xl md:text-xl lg:text-xl text-[16px] text-left font-semibold hover:text-amber-600">Apa itu AI CV ATS Checker?</AccordionTrigger>
         <AccordionContent className="text-[14px]">
         AI CV ATS checker adalah tool yang membantu Anda memeriksa apakah CV Anda 
         dioptimalkan untukapplicant tracking systems (ATS). ATS digunakan oleh perekrut
@@ -27,7 +27,7 @@ import {
         </AccordionContent>
       </AccordionItem>
       <AccordionItem value="item-2">
-        <AccordionTrigger className="text-xl font-semibold hover:text-amber-600">Bagaimana cara kerja AI CV ATS Checker?</AccordionTrigger>
+        <AccordionTrigger className="sm:text-xl md:text-xl lg:text-xl text-[16px] text-left font-semibold hover:text-amber-600">Bagaimana cara kerja AI CV ATS Checker?</AccordionTrigger>
         <AccordionContent className="text-[14px]">
         AI CV ATS Checker menggunakan kecerdasan buatan untuk menganalisis CV 
         Anda dan mengidentifikasi masalah potensial yang dapat mencegahnya melewati ATS.
@@ -36,7 +36,7 @@ import {
         </AccordionContent>
       </AccordionItem>
       <AccordionItem value="item-3">
-        <AccordionTrigger className="text-xl font-semibold hover:text-amber-600">Apakah data saya aman dengan AI CV ATS Checker?</AccordionTrigger>
+        <AccordionTrigger className="sm:text-xl md:text-xl lg:text-xl text-[16px] text-left font-semibold hover:text-amber-600">Apakah data saya aman dengan AI CV ATS Checker?</AccordionTrigger>
         <AccordionContent className="text-[14px]">
         Ya, data Anda aman dengan AI CV ATS Checker. Kami tidak menyimpan 
         informasi pribadi atau CV yang dikirim melalui tool ini. CV Anda diproses 
@@ -45,7 +45,7 @@ import {
         </AccordionContent>
       </AccordionItem>
       <AccordionItem value="item-4">
-        <AccordionTrigger className="text-xl font-semibold hover:text-amber-600 text-left">Saya memiliki pertanyaan lebih lanjut. Bagaimana saya bisa menghubungi Anda? </AccordionTrigger>
+        <AccordionTrigger className="sm:text-xl md:text-xl lg:text-xl text-[16px] font-semibold hover:text-amber-600 text-left">Saya memiliki pertanyaan lebih lanjut. Bagaimana saya bisa menghubungi Anda? </AccordionTrigger>
         <AccordionContent className="text-[14px]">
         Jika Anda memiliki pertanyaan lebih lanjut tentang AI CV Reviewer 
         atau memerlukan bantuan dengan CV Anda, Anda dapat menghubungi kami di <span className="text-indigo-600">raffialbar135@gmail.com</span>.
