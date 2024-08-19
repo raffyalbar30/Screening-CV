@@ -1,5 +1,6 @@
 import React from 'react';
 import { Poppins } from "next/font/google";
+import Example from './dropdown-menu';
 const font = Poppins({
     weight: '400',
     subsets: ['latin'] 
@@ -24,6 +25,8 @@ const Navbar = () => {
           </ul>
         </div>
         
+        <div>
+        </div>
         </>
     );
 }
