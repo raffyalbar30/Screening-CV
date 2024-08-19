@@ -1,6 +1,7 @@
 import React from 'react'
 import { Poppins } from "next/font/google";
-import Uploader from '../UI/uploader';
+import Uploader from '../Uploader/uploader';
+
 const font = Poppins({
     weight: '400',
     subsets: ['latin'] 
