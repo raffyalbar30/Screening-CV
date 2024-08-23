@@ -1,11 +1,15 @@
-import Dashboard from "@/layouts/Dashboard/Dashboard";
+import ReactQueryProv from "@/provider/ReactQueryProv";
 import "@/styles/globals.css";
 
+
 export default function App({ Component, pageProps }) {
+
+ 
   return (
     <>
-    <Dashboard/> 
-    <Component {...pageProps} />;
+         <ReactQueryProv>
+            <Component {...pageProps} />
+         </ReactQueryProv>
     </>
 
   )
