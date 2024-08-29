@@ -20,8 +20,8 @@ const Navbar = () => {
           <span className="ml-1 text-xl font-semibold text-slate-500 font-white">affsume</span>
          </div>
     
-        <div className=" hidden lg:block md:block sm:block">
-          <ul className={`${font.className} flex gap-x-6 absolute font-semibold right-8`}>
+        <div className="hidden lg:block md:block sm:block">
+          <ul className={`${font.className} flex gap-x-6 cursor-pointer absolute font-semibold right-8`}>
               <li>Buat Cv Sekarang</li>
               <li>Tempalate CV</li>
               <li>Feedback</li>
