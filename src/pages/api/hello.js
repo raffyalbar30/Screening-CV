@@ -19,13 +19,14 @@ export const config = {
 
 
 export default function handler(req, res) {
+   const { upload } = req.body
    const Sending = async() => {
     const model = genAI.getGenerativeModel({
       // Choose a Gemini model.
       model: "gemini-1.5-flash",
     });
 
-    const uploadResponse = await fileManager.uploadFile(res.data.file, {
+    const uploadResponse = await fileManager.uploadFile(upload, {
       mimeType: "application/pdf",
       displayName: "Gemini 1.5 PDF",
     });
