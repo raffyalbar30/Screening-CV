@@ -19,31 +19,33 @@ export const config = {
 
 
 export default function handler(req, res) {
-   const { upload } = req.body
-   const Sending = async() => {
-    const model = genAI.getGenerativeModel({
-      // Choose a Gemini model.
-      model: "gemini-1.5-flash",
-    });
-
-    const uploadResponse = await fileManager.uploadFile(upload, {
-      mimeType: "application/pdf",
-      displayName: "Gemini 1.5 PDF",
-    });
-
-    const result = await model.generateContent([
-      {
-        fileData: {
-          mimeType: uploadResponse.file.mimeType,
-          fileUri: uploadResponse.file.uri
-        }
-      },
-      { text: res.data.prompt },
-    ]);
-    
-    console.log(result.response.text())
-
+   if (req.method === 'POST') {
+     const Sending = async() => {
+      const model = genAI.getGenerativeModel({
+        model: "gemini-1.5-flash",
+      });
+  
+      const uploadResponse = await fileManager.uploadFile(upload, {
+        mimeType: "application/pdf",
+        displayName: "Gemini 1.5 PDF",
+      });
+  
+      const result = await model.generateContent([
+        {
+          fileData: {
+            mimeType: uploadResponse.file.mimeType,
+            fileUri: uploadResponse.file.uri
+          }
+        },
+        { text: res.data.prompt },
+      ]);
+      
+      console.log(result.response.text())
+  
+     }
+    return Sending;
+   } else {
+    res.status(400).json({prompt: "gagal"})
    }
-  return Sending;
   res.status(200).json({ prompt : res.data});
 }
