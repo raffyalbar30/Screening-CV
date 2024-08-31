@@ -8,24 +8,54 @@ import axios from 'axios';
 import Button from '../UI/button';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { GoogleGenerativeAI } from "@google/generative-ai";
+
 
 
 export default function Uploader() {
   const [getInputuser, setInputuser] = useState("");
   const [file, setfile] = useState(null);
-  
 
+  const genAI = new GoogleGenerativeAI(process.env.NEXT_PUBLIC_API_URL);
+  const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+
+  
   const HandleSumbit =  async () => {
-    try {
-      const Upload = {
-          prompt : getInputuser,
-          file : file
+    if (file != null) {
+       let reader = new FileReader();
+       const uploadResponse = reader.readAsDataURL(file);
+       reader.onload = function () {
+         console.log(reader.result);
+       };
+      
+      try {
+
+        await axios.post(`${genAI}`,uploadResponse, {
+          headers: {
+            'Content-Type': 'application/json',
+          }
+  
+        }).then(Ress => console.log(Ress))
+      //   const result = await model.generateContent([
+      //     {
+      //       fileData: {
+      //         mimeType: uploadResponse.file.mimeType,
+      //         fileUri: uploadResponse.file.uri
+      //       }
+      //     },
+      //     { text: getInputuser },
+      //   ]);
+      
+      // // Output the generated text to the console
+      // console.log(result.response.text())
+      
+      } catch (error) {
+        console.log(error);
+        
       }
-      await axios.post("http://localhost:3000/api/hello", Upload)
-      .then(ress => console.log(ress))
-    } catch (error) {
-       console.log(error);
     }
+    
+    
   }
 
   useEffect(() => {
