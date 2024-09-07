@@ -8,49 +8,55 @@ import axios from 'axios';
 import Button from '../UI/button';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { GoogleGenerativeAI } from "@google/generative-ai";
+import Convertertobase64 from '@/Services/helper';
+
 
 
 
 export default function Uploader() {
   const [getInputuser, setInputuser] = useState("");
   const [file, setfile] = useState(null);
- 
-  
-
-  const genAI = new GoogleGenerativeAI(process.env.NEXT_PUBLIC_API_URL);
-  const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+  const [sendfile, setsendfile] = useState(null);
 
 
+
+   
+   
   const HandleSumbit =  async () => {
-    const formData = new FormData(); 
-    formData.set("file", file);
-    console.log(file);
-    
-    
-     if (file != null) {
-      try {
-        const result = await model.generateContent([
-          {
-            fileData: {
-              mimeType: "application/pdf",
-              fileUri: "localhost:3000/pdf/CV.pdf"
-            }
-          },
-          { text: `Can you summarize this document as a bulleted list? ${getInputuser}` },
-        ]);
+    if (file != null) {
 
-        console.log(result.response.text());
+      const reader = new FileReader();
+      reader.readAsDataURL(file)
+      reader.onloadend = () => {
+        setsendfile(reader.result.split(',')[1]);
+       };
+
+       console.log(sendfile);
+       
+        const Data = {
+           base64 : sendfile,
+           text : `coba kamu analisis cv ini dengan score dan identifikasi kesalahan tata bahasa sesuai bidang pekerjaan ${getInputuser}`,
+           gaya : "kamu adalah asisten yang baik"
+        }
+
+      try {
+        axios.post(`https://api.nyxs.pw/ai/gemini-input64`, Data, {
+          headers: {
+            "Content-Type" : "application/json"
+          }
+        })
+        .then(ress => console.log(ress));
 
       } catch (error) {
         console.error("Error processing the file:", error);
       } 
     };
   }
-
+   
+  
   useEffect(() => {
     HandleSumbit();
-  }, [getInputuser])
+  }, [])
 
   return (
     <>

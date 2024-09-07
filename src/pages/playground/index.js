@@ -15,7 +15,7 @@ export default function Index() {
 
 
   const { data } = FecthingQuery();
-  console.log(data);
+
   
   
 
