@@ -8,7 +8,9 @@ import axios from 'axios';
 import Button from '../UI/button';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import Convertertobase64 from '@/Services/helper';
+import { convertToBase64, uploading } from '@/Services/helper';
+import Router from 'next/router';
+
 
 
 
@@ -16,41 +18,35 @@ import Convertertobase64 from '@/Services/helper';
 export default function Uploader() {
   const [getInputuser, setInputuser] = useState("");
   const [file, setfile] = useState(null);
-  const [sendfile, setsendfile] = useState(null);
+  const [result, setresult] = useState([]);
 
 
-
-   
-   
+  
   const HandleSumbit =  async () => {
     if (file != null) {
-
-      const reader = new FileReader();
-      reader.readAsDataURL(file)
-      reader.onloadend = () => {
-        setsendfile(reader.result.split(',')[1]);
-       };
-
-       console.log(sendfile);
-       
-        const Data = {
-           base64 : sendfile,
-           text : `coba kamu analisis cv ini dengan score dan identifikasi kesalahan tata bahasa sesuai bidang pekerjaan ${getInputuser}`,
-           gaya : "kamu adalah asisten yang baik"
-        }
+      const base64File = await convertToBase64(file);
 
       try {
-        axios.post(`https://api.nyxs.pw/ai/gemini-input64`, Data, {
-          headers: {
-            "Content-Type" : "application/json"
-          }
-        })
-        .then(ress => console.log(ress));
-
+        const Response = await uploading(base64File, getInputuser)
+        setresult(Response.data.result);
+        console.log(result);
+        
       } catch (error) {
         console.error("Error processing the file:", error);
       } 
-    };
+
+      Router.push({
+        pathname: "/Tool/cv_PDF",
+        query : {
+          base64File,
+          result
+        }
+      })
+     
+    
+     };
+
+    
   }
    
   
@@ -69,9 +65,12 @@ export default function Uploader() {
             <Button HandleSumbit={HandleSumbit}>  
               <CiSearch className="text-[24px]" />
               Check ATS
-              </Button>
+            </Button>
           </div>
       </div>
+
+    
     </>
+
   )
 }
