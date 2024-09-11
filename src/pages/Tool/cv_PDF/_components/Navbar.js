@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Navbar() {
   return (
-    <div className="border border-slate-500 flex  items-center mt-2">
+    <div className=" flex  items-center mt-2">
           <div className="ml-8 px-4 py-2 rounded-lg bg-indigo-800">
              <span className="text-xl text-white">R</span>
          </div>
