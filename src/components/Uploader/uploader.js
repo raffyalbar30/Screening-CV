@@ -18,7 +18,7 @@ import Router from 'next/router';
 export default function Uploader() {
   const [getInputuser, setInputuser] = useState("");
   const [file, setfile] = useState(null);
-  const [result, setresult] = useState([]);
+  
 
 
   
@@ -28,20 +28,19 @@ export default function Uploader() {
 
       try {
         const Response = await uploading(base64File, getInputuser)
-        setresult(Response.data.result);
-        console.log(result);
+        const Result = Response.data.result
+        Router.push({
+          pathname: "/Tool/cv_PDF",
+          query : {
+            base64File,
+            Result
+          }
+        })
         
       } catch (error) {
         console.error("Error processing the file:", error);
       } 
 
-      Router.push({
-        pathname: "/Tool/cv_PDF",
-        query : {
-          base64File,
-          result
-        }
-      })
      
     
      };
