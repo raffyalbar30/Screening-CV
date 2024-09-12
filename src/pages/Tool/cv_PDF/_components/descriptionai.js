@@ -12,9 +12,9 @@ export default function Description() {
 
   return (
     <div className="mt-12">
-      <div className="flex justify-between gap-x-2 h-full">
+      <div className="flex justify-between gap-x-2 h-1/2">
         {/* Bagian Kode */}
-        <div className="h-full rounded-md w-1/2">
+        <div className="h-full rounded-md w-1/2 overflow-auto overflow-y-auto">
           <SyntaxHighlight
             language="swift"
             style={atomOneDark}
@@ -28,7 +28,7 @@ export default function Description() {
         {/* Bagian PDF */}
         <div className="h-full w-1/2">
           <div className="flex justify-center h-full">
-            <iframe src={pdfData} className="w-full" height="670" ></iframe>
+            <iframe src={pdfData} className="w-full" height="1090" ></iframe>
           </div>
         </div>
       </div>
