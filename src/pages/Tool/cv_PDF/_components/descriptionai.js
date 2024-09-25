@@ -14,7 +14,7 @@ export default function Description() {
     <div className="mt-12">
       <div className="flex justify-between gap-x-2 h-1/2">
         {/* Bagian Kode */}
-        <div className="h-full rounded-md w-1/2 overflow-auto overflow-y-auto">
+        <div className="h-1/2 rounded-md w-1/2 overflow-auto overflow-y-auto">
           <SyntaxHighlighter
             language="markdown"
             style={coy}

@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+
 export const convertToBase64 = (file) => {
    return new Promise((resolve, reject) => {
      const reader = new FileReader();
@@ -24,8 +25,12 @@ export const convertToBase64 = (file) => {
          headers: {
            "Content-Type" : "application/json"
          }
-       })
+       }); 
 
-       return await Response;
+       const DataResponse = `tolong rapihkan text ini hilangkan tanda baca * didalam text ${Response}`;
+
+       const ReplaceResponsedata = axios.post(`https://api.nyxs.pw/ai/gpt4?text=${DataResponse}`)
+
+       return await ReplaceResponsedata;
    
  }
