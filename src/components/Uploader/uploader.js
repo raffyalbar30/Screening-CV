@@ -25,17 +25,26 @@ export default function Uploader() {
   const HandleSumbit =  async () => {
     if (file != null) {
       const base64File = await convertToBase64(file);
-
+      
       try {
         const Response = await uploading(base64File, getInputuser)
-        const Result = Response.data.result
-        Router.push({
-          pathname: "/Tool/cv_PDF",
-          query : {
-            base64File,
-            Result
-          }
-        })
+        const Result = Response.data.result; 
+        const Convert = `jawab sebagai cv reviewer, layaknya di sebuah hrd, berikan kekurangan dan kelebihan dari inputan user ${Result} dan rapihkan text berikut`;
+        const encodedText = encodeURIComponent(Convert);
+        const Api = `https://api.nyxs.pw/ai/gpt4o?text=${encodedText}`;
+         console.log(Api)
+         const ApiResponse = await fetch(Api)
+         const json = await ApiResponse.json();
+
+         console.log(json);
+         
+        // Router.push({
+        //   pathname: "/Tool/cv_PDF",
+        //   query : {
+        //     base64File,
+        //     Result
+        //   }
+        // })
         
       } catch (error) {
         console.error("Error processing the file:", error);
