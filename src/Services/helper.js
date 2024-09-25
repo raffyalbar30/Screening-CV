@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+
 export const convertToBase64 = (file) => {
    return new Promise((resolve, reject) => {
      const reader = new FileReader();
@@ -24,8 +25,8 @@ export const convertToBase64 = (file) => {
          headers: {
            "Content-Type" : "application/json"
          }
-       })
+       }); 
 
-       return await Response;
+      return Response;
    
  }
