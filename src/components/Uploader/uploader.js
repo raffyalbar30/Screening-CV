@@ -31,12 +31,13 @@ export default function Uploader() {
         const Result = Response.data.result; 
         const Convert = `jawab sebagai cv reviewer, layaknya di sebuah hrd, berikan kekurangan dan kelebihan dari inputan user ${Result} dan rapihkan text berikut`;
         const encodedText = encodeURIComponent(Convert);
-        const Api = `https://api.nyxs.pw/ai/gpt4o?text=${encodedText}`;
-         console.log(Api)
-         const ApiResponse = await fetch(Api)
-         const json = await ApiResponse.json();
+        const system = "jawab sebagai asisten yg supportif, dan juga kamu adalah pribadi yg menyenangkan";
+        const encodedSystem = encodeURIComponent(system);
+        const Api = `https://api.nyxs.pw/ai/gpt4o?text=${encodedText}&system=${encodedSystem}`;
+        const ApiResponse = await fetch(Api)
+        const json = await ApiResponse.json();
 
-         console.log(json);
+         console.log(json.result);
          
         // Router.push({
         //   pathname: "/Tool/cv_PDF",
