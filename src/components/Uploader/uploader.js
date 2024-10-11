@@ -36,8 +36,9 @@ export default function Uploader() {
         const Api = `https://api.nyxs.pw/ai/gpt4o?text=${encodedText}&system=${encodedSystem}`;
         const ApiResponse = await fetch(Api)
         const json = await ApiResponse.json();
-
-         console.log(json.result);
+        let ClenedResponse = json.result;
+        const Replace = ClenedResponse.replace(/\\+/g, '*');
+         console.log(Replace);
          
         // Router.push({
         //   pathname: "/Tool/cv_PDF",
