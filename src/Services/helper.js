@@ -30,3 +30,18 @@ export const convertToBase64 = (file) => {
       return Response;
    
  }
+
+
+ export const ConvertResponse = async (Response) => {
+  const Convert = `jawab sebagai cv reviewer, layaknya di sebuah hrd, berikan kekurangan dan kelebihan dari inputan user ${Response} dan rapihkan text berikut`;
+  const encodedText = encodeURIComponent(Convert);
+  const system = "jawab sebagai asisten yg supportif, dan juga kamu adalah pribadi yg menyenangkan";
+  const encodedSystem = encodeURIComponent(system);
+  const Api = `https://api.nyxs.pw/ai/gpt4o?text=${encodedText}&system=${encodedSystem}`;
+  const ApiResponse = await fetch(Api)
+  const json = await ApiResponse.json();
+  let ClenedResponse = json.result;
+  const Replace = ClenedResponse.replace(/\*/g, '');
+
+   return Replace;
+ }
