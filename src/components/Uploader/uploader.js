@@ -8,7 +8,7 @@ import axios from 'axios';
 import Button from '../UI/button';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { convertToBase64, uploading } from '@/Services/helper';
+import { ConvertResponse, convertToBase64, uploading } from '@/Services/helper';
 import Router from 'next/router';
 
 
@@ -28,17 +28,13 @@ export default function Uploader() {
       
       try {
         const Response = await uploading(base64File, getInputuser)
-        const Result = Response.data.result; 
-        const Convert = `jawab sebagai cv reviewer, layaknya di sebuah hrd, berikan kekurangan dan kelebihan dari inputan user ${Result} dan rapihkan text berikut`;
-        const encodedText = encodeURIComponent(Convert);
-        const system = "jawab sebagai asisten yg supportif, dan juga kamu adalah pribadi yg menyenangkan";
-        const encodedSystem = encodeURIComponent(system);
-        const Api = `https://api.nyxs.pw/ai/gpt4o?text=${encodedText}&system=${encodedSystem}`;
-        const ApiResponse = await fetch(Api)
-        const json = await ApiResponse.json();
-        let ClenedResponse = json.result;
-        const Replace = ClenedResponse.replace(/\\+/g, '*');
-         console.log(Replace);
+        const Result = Response.data.result;
+      
+          const ConvertAi = ConvertResponse(Result);
+          console.log(ConvertAi);
+     
+
+        
          
         // Router.push({
         //   pathname: "/Tool/cv_PDF",
